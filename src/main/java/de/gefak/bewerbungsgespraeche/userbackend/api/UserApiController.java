@@ -1,9 +1,8 @@
 package de.gefak.bewerbungsgespraeche.userbackend.api;
 
-import de.gefak.bewerbungsgespraeche.userbackend.api.dto.CreateUserRequest;
 import de.gefak.bewerbungsgespraeche.userbackend.api.dto.UserDto;
 import de.gefak.bewerbungsgespraeche.userbackend.api.internal.IUserRepository;
-import org.apache.commons.lang3.NotImplementedException;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,8 +23,10 @@ public class UserApiController {
     }
 
     @PostMapping
-    public void createUser(@RequestBody CreateUserRequest request) {
-        throw new NotImplementedException("Not yet implemented");
+    public void createUser(@RequestBody @Valid UserDto request) {
+        this.userRepository.createUser(request);
+
+        //throw new NotImplementedException("Not yet implemented");
     }
 
     @GetMapping

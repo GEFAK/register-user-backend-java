@@ -3,6 +3,7 @@ package de.gefak.bewerbungsgespraeche.userbackend.api.internal;
 import de.gefak.bewerbungsgespraeche.userbackend.api.dto.UserDto;
 import org.springframework.context.annotation.Bean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,14 +16,19 @@ public class UserRepository implements IUserRepository {
 
     public UserRepository() {
         if(userList == null){
-            List.of(
+            new ArrayList<>(List.of(
                     new UserDto("Mustermann", "Max", "max@deinemail.de", "Hallo ich bin Max und code gerne in Java"),
                     new UserDto("Doe", "Jane", "jane@deinemail.de", "Hallo ich bin Jane und code gerne in C#")
-            );
+            ));
         }
     }
     @Override
     public List<UserDto> getUserList() {
         return userList;
+    }
+
+    @Override
+    public void createUser(UserDto user) {
+        throw new UnsupportedOperationException("Not yet implemented");
     }
 }

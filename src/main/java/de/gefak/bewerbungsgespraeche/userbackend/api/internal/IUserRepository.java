@@ -11,4 +11,6 @@ public interface IUserRepository {
 
     public List<UserDto> getUserList();
 
+    public void createUser(UserDto user);
+
 }
